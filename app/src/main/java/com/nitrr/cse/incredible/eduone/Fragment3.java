@@ -1,56 +1,24 @@
 package com.nitrr.cse.incredible.eduone;
-        import android.support.v4.app.FragmentActivity;
-
-        import android.annotation.SuppressLint;
-        import android.annotation.TargetApi;
-        import android.os.Build;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.support.v7.widget.LinearLayoutManager;
-        import android.support.v7.widget.RecyclerView;
-        import android.view.View;
-        import android.widget.ProgressBar;
-        import android.widget.Toast;
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.JsonArrayRequest;
-        import com.android.volley.toolbox.Volley;
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
-        import java.util.ArrayList;
-        import java.util.List;
-
         import android.content.Intent;
         import android.os.Bundle;
         import android.support.annotation.Nullable;
+        import android.support.design.widget.FloatingActionButton;
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentActivity;
+        import android.support.v7.widget.CardView;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Button;
         import android.widget.TextView;
 
+        import com.nitrr.cse.incredible.eduone.Courses.CourseReg;
+        import com.nitrr.cse.incredible.eduone.Cs.Ds.DsActivity;
+        import com.nitrr.cse.incredible.eduone.Login_Register.Login;
+        import com.nitrr.cse.incredible.eduone.Login_Register.Session;
+
+
 public class Fragment3 extends Fragment {
-
-    private List<Fetch> listFetch;
-
-    //Creating Views
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
-    //Initializing ProgressBar
-    private ProgressBar progressBar;
-
-
-    //Volley Request Queue
-    private RequestQueue requestQueue;
-
-    //The request counter to send ?page=1, ?page=2  requests
-    private int requestCount = 1;
-
 
     public Fragment3() {
 
@@ -60,139 +28,99 @@ public class Fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
-        v = inflater.inflate(R.layout.fragment_fragment3, container, false);
+        v = inflater.inflate(R.layout.fragment_fragment1, container, false);
 
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        final Session session;
 
-        progressBar = (ProgressBar) v.findViewById(R.id.progressBar1);
-        //Initializing our superheroes list
-        listFetch = new ArrayList<>();
-        requestQueue = Volley.newRequestQueue(getActivity());
+        session = new Session(getActivity());
 
-        //Calling method to get data to fetch data
-        getData();
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                session.setLoggedin(false);
 
-        //Adding an scroll change listener to recyclerview
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            recyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                    if (isLastItemDisplaying(recyclerView)) {
-                        //Calling the method getdata again
-                        progressBar.setVisibility(View.VISIBLE);
-                        getData();
-                    }
-
-                }
-            });
-        }
+                startActivity(new Intent(getContext(),Login.class));
+                getActivity().finish();
+            }
+        });
 
 
-        //initializing our adapter
-        adapter = new CardAdapter(listFetch, getActivity());
 
-        //Adding adapter to recyclerview
-        recyclerView.setAdapter(adapter);
+
+        Button cs = (Button) v.findViewById(R.id.btcs);
+        Button mech = (Button) v.findViewById(R.id.btmech);
+        Button civil = (Button) v.findViewById(R.id.btcivil);
+
+        Button elex = (Button) v.findViewById(R.id.btelex);
+        Button electrical = (Button) v.findViewById(R.id.btelectrical);
+
+        cs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+
+        mech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        elex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        civil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        electrical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+
+
         return v;
     }
 
 
-
-    //Request to get json from server we are passing an integer here
-    //This integer will used to specify the page number for the request ?page = requestcount
-    //This method would return a JsonArrayRequest that will be added to the request queue
-    private JsonArrayRequest getDataFromServer(int requestCount) {
-
-        //Displaying Progressbar
-        progressBar.setVisibility(View.VISIBLE);
-
-        //JsonArrayRequest of volley
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Config.DATA_URL,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        //Calling method parseData to parse the json response
-                        parseData(response);
-                        //Hiding the progressbar
-                        progressBar.setVisibility(View.GONE);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressBar.setVisibility(View.GONE);
-                        //If an error occurs that means end of the list has reached
-                        Toast.makeText(getActivity(), "Please check internet connection ", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        //Returning the request
-        return jsonArrayRequest;
-    }
-
-    //This method will get data from the web api
-    private void getData() {
-        //Adding the method to the queue by calling the method getDataFromServer
-        requestQueue.add(getDataFromServer(requestCount));
-        //Incrementing the request counter
-        requestCount++;
-    }
-
-    //This method will parse json data
-    private void parseData(JSONArray array) {
-        for (int i = 0; i < array.length(); i++) {
-            //Creating the superhero object
-            Fetch fetch = new Fetch();
-            JSONObject json = null;
-            try {
-                //Getting json
-                json = array.getJSONObject(i);
-
-                //Adding data to the superhero object
-                fetch.setImageUrl(json.getString(Config.TAG_IMAGE_URL));
-                fetch.setId(json.getString(Config.TAG_ID));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            //Adding the superhero object to the list
-            listFetch.add(fetch);
-        }
-
-        //Notifying the adapter that data has been added or changed
-        adapter.notifyDataSetChanged();
-    }
-
-    //This method would check that the recyclerview scroll has reached the bottom or not
-    private boolean isLastItemDisplaying(RecyclerView recyclerView) {
-        if (recyclerView.getAdapter().getItemCount() != 0) {
-            int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
-
-            if (lastVisibleItemPosition != RecyclerView.NO_POSITION && lastVisibleItemPosition == recyclerView.getAdapter().getItemCount() - 1)
-                return true;
-        }
-        return false;
-    }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

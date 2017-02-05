@@ -12,8 +12,12 @@ package com.nitrr.cse.incredible.eduone;
         import android.widget.Button;
         import android.widget.TextView;
 
+        import com.nitrr.cse.incredible.eduone.Courses.CourseReg;
+        import com.nitrr.cse.incredible.eduone.Cs.Ds.DsActivity;
         import com.nitrr.cse.incredible.eduone.Login_Register.Login;
         import com.nitrr.cse.incredible.eduone.Login_Register.Session;
+        import com.nitrr.cse.incredible.eduone.Sub.Cs;
+        import com.nitrr.cse.incredible.eduone.Sub.Mech;
 
 
 public class Fragment1 extends Fragment {
@@ -47,78 +51,77 @@ public class Fragment1 extends Fragment {
 
 
 
-        Button b1 = (Button) v.findViewById(R.id.b1);
-        CardView b3 = (CardView) v.findViewById(R.id.cardAbout);
-        Button b2 = (Button) v.findViewById(R.id.b2);
-        Button b5 = (Button) v.findViewById(R.id.b5);
+        Button cs = (Button) v.findViewById(R.id.btcs);
+        Button mech = (Button) v.findViewById(R.id.btmech);
+        Button civil = (Button) v.findViewById(R.id.btcivil);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        Button elex = (Button) v.findViewById(R.id.btelex);
+        Button electrical = (Button) v.findViewById(R.id.btelectrical);
+
+        cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try {
+                Intent ourintent=new Intent(getContext(),Cs.class);
+                ourintent.putExtra("key","value");
+                startActivity(ourintent);
 
-                    Intent ourintent = new Intent(getActivity(), Class.forName("saurabh.cse.nitrr.Prantadhyakshya"));
-                    startActivity(ourintent);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                //getIntent().getExtras().get(key);
 
 
             }
         });
 
-        b2.setOnClickListener(new View.OnClickListener() {
+
+
+        mech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try {
-
-                    Intent ourintent = new Intent(getActivity(), Class.forName("saurabh.cse.nitrr.Leadership.Leadership"));
-                    startActivity(ourintent);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Intent ourintent=new Intent(getContext(),Mech.class);
+                startActivity(ourintent);
 
 
             }
         });
 
-        b3.setOnClickListener(new View.OnClickListener() {
+
+        elex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try {
-
-                    Intent ourintent = new Intent(getActivity(), Class.forName("saurabh.cse.nitrr.About"));
-                    startActivity(ourintent);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
 
 
             }
         });
 
-        b5.setOnClickListener(new View.OnClickListener() {
+
+        civil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try {
-
-                    Intent ourintent = new Intent(getActivity(), Class.forName("saurabh.cse.nitrr.Links"));
-                    startActivity(ourintent);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
 
 
             }
         });
+
+
+        electrical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
 
 
         return v;

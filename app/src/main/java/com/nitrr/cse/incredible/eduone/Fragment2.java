@@ -1,46 +1,25 @@
 package com.nitrr.cse.incredible.eduone;
 
-        import android.app.ProgressDialog;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
-        import com.android.volley.AuthFailureError;
-        import com.android.volley.Request;
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.StringRequest;
-        import com.android.volley.toolbox.Volley;
-        import org.json.JSONException;
-        import org.json.JSONObject;
-        import java.util.HashMap;
-        import java.util.Map;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentActivity;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-
+import com.nitrr.cse.incredible.eduone.Courses.CourseReg;
+import com.nitrr.cse.incredible.eduone.Cs.Ds.DsActivity;
+import com.nitrr.cse.incredible.eduone.Login_Register.Login;
+import com.nitrr.cse.incredible.eduone.Login_Register.Session;
 
 
 public class Fragment2 extends Fragment {
-
-    private EditText name, phone, dist, post;
-    private Button register;
-    private RequestQueue requestQueue;
-    private static final String URL = "http://saurabhshrivas6.esy.es/user_control.php"; //http://saurabhshrivas6.esy.es/show.php
-    private StringRequest request;
 
     public Fragment2() {
 
@@ -50,74 +29,94 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
-        v = inflater.inflate(R.layout.fragment_fragment2, container, false);
+        v = inflater.inflate(R.layout.fragment_fragment1, container, false);
 
 
-        name = (EditText) v.findViewById(R.id.etname);
-        phone = (EditText) v.findViewById(R.id.etph);
+        final Session session;
 
-        dist = (EditText) v.findViewById(R.id.etdist);
+        session = new Session(getActivity());
 
-        post = (EditText) v.findViewById(R.id.etpost);
-        register = (Button) v.findViewById(R.id.btRegister);
-
-
-        requestQueue = Volley.newRequestQueue(getActivity());
-
-        register.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                session.setLoggedin(false);
 
-                final ProgressDialog loading;
-                loading = ProgressDialog.show(getActivity(), "Please Wait...", null, true, true);
-
-
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-
-                            JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.names().get(0).equals("success")) {
-                                loading.dismiss();
-                                Toast.makeText(getContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
-
-                                Toast.makeText(getContext(), "SUCCESSFULLY REGISTERED ", Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                loading.dismiss();
-                                Toast.makeText(getContext(), "Error" + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
-                                phone.setText("");
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("name", name.getText().toString());
-                        hashMap.put("phone", phone.getText().toString());
-                        hashMap.put("district", dist.getText().toString());
-                        hashMap.put("post", post.getText().toString());
-
-                        return hashMap;
-                    }
-                };
-
-                requestQueue.add(request);
+                startActivity(new Intent(getContext(),Login.class));
+                getActivity().finish();
             }
         });
+
+
+
+
+        Button cs = (Button) v.findViewById(R.id.btcs);
+        Button mech = (Button) v.findViewById(R.id.btmech);
+        Button civil = (Button) v.findViewById(R.id.btcivil);
+
+        Button elex = (Button) v.findViewById(R.id.btelex);
+        Button electrical = (Button) v.findViewById(R.id.btelectrical);
+
+        cs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+
+        mech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        elex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        civil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
+
+        electrical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                startActivity(ourintent);
+
+
+            }
+        });
+
 
 
 
@@ -126,24 +125,3 @@ public class Fragment2 extends Fragment {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

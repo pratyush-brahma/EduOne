@@ -16,8 +16,11 @@ package com.nitrr.cse.incredible.eduone;
         import android.view.MenuItem;
         import android.widget.Button;
 
+        import com.nitrr.cse.incredible.eduone.Courses.CourseReg;
+        import com.nitrr.cse.incredible.eduone.Courses.Faculty;
         import com.nitrr.cse.incredible.eduone.Login_Register.Login;
         import com.nitrr.cse.incredible.eduone.Login_Register.Session;
+        import com.nitrr.cse.incredible.eduone.Subject.Mysubject;
 
 
 public class MainActivity extends AppCompatActivity
@@ -169,46 +172,27 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
-            try {
 
-                Class ourclass = Class.forName("saurabh.cse.nitrr.MainActivity");
-                Intent ourintent = new Intent(MainActivity.this, ourclass);
-                startActivity(ourintent);
+            Intent ourintent=new Intent(MainActivity.this,CourseReg.class);
+            startActivity(ourintent);
 
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
         }
 
         else if (id == R.id.nav_developer) {
 
-            try{
 
-                Class ourclass=Class.forName("saurabh.cse.nitrr.Developer");
-                Intent ourintent=new Intent(MainActivity.this,ourclass);
-                startActivity(ourintent);
-
-            }
-            catch(ClassNotFoundException e){
-                e.printStackTrace();
-            }
-
-
+            Intent ourintent=new Intent(MainActivity.this,CourseReg.class);
+            startActivity(ourintent);
         }
+
+
+
 
         else if (id == R.id.nav_courses) {
 
 
-            try{
-
-                Class ourclass=Class.forName("saurabh.cse.nitrr.Gallery");
-                Intent ourintent=new Intent(MainActivity.this,ourclass);
-                startActivity(ourintent);
-
-            }
-            catch(ClassNotFoundException e){
-                e.printStackTrace();
-            }
+            Intent ourintent=new Intent(MainActivity.this,CourseReg.class);
+            startActivity(ourintent);
 
 
         }
@@ -218,16 +202,8 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_doubts) {
 
 
-            try{
-
-                Class ourclass=Class.forName("saurabh.cse.nitrr.Gallery");
-                Intent ourintent=new Intent(MainActivity.this,ourclass);
-                startActivity(ourintent);
-
-            }
-            catch(ClassNotFoundException e){
-                e.printStackTrace();
-            }
+            Intent ourintent=new Intent(MainActivity.this,Mysubject.class);
+            startActivity(ourintent);
 
 
         }
@@ -235,16 +211,10 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_logout) {
 
 
-            try{
+            session.setLoggedin(false);
 
-                Class ourclass=Class.forName("saurabh.cse.nitrr.Gallery");
-                Intent ourintent=new Intent(MainActivity.this,ourclass);
-                startActivity(ourintent);
-
-            }
-            catch(ClassNotFoundException e){
-                e.printStackTrace();
-            }
+            startActivity(new Intent(MainActivity.this,Login.class));
+            finish();
 
 
         }

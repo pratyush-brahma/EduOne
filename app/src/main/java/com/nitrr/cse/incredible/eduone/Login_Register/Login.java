@@ -1,4 +1,5 @@
 package com.nitrr.cse.incredible.eduone.Login_Register;
+        import android.app.ProgressDialog;
         import android.content.Intent;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
@@ -24,11 +25,11 @@ package com.nitrr.cse.incredible.eduone.Login_Register;
 
 public class Login extends AppCompatActivity {
 
-    private EditText email,password;
+    private EditText phone,password;
     private Button login;
     private Button register;
     private RequestQueue requestQueue;
-    private static final String URL = "http://saurabhshrivas3.esy.es/user_control.php";
+    private static final String URL = "http://eduone.esy.es/user_controllogin.php";
     private StringRequest request;
     private Session session;
 
@@ -38,7 +39,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         session = new Session(this);
-        email = (EditText) findViewById(R.id.etmail);
+        phone = (EditText) findViewById(R.id.etphoneno);
         password = (EditText) findViewById(R.id.etpassword);
         login = (Button) findViewById(R.id.btLogin);
         register = (Button) findViewById(R.id.btRegister);
@@ -60,6 +61,9 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ProgressDialog loading;
+                loading = ProgressDialog.show(Login.this, "Please Wait...",null,true,true);
+
 
                 request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
@@ -69,12 +73,16 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             if(jsonObject.names().get(0).equals("success"))
                             {
+                                loading.dismiss();
+
                                 session.setLoggedin(true);
                                 Toast.makeText(getApplicationContext(),"SUCCESS "+jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 finish();
 
                             }else {
+                                loading.dismiss();
+
                                 Toast.makeText(getApplicationContext(), "Error" +jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                                 password.setText("");
 
@@ -95,7 +103,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String,String> hashMap = new HashMap<String, String>();
-                        hashMap.put("email",email.getText().toString());
+                        hashMap.put("phone",phone.getText().toString());
                         hashMap.put("password",password.getText().toString());
 
                         return hashMap;

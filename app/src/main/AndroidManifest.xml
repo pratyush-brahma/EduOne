@@ -3,7 +3,9 @@
     package="com.nitrr.cse.incredible.eduone">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    android:hardwareAccelerated="true"
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,7 +37,16 @@
         <activity android:name=".Login_Register.Register" />
         <activity android:name=".Login_Register.Login" />
         <activity android:name=".Gallery" />
-        <activity android:name=".Subject.Mysubject"></activity>
+        <activity android:name=".Subject.Mysubject" />
+        <activity android:name=".Courses.CourseReg" />
+        <activity android:name=".Courses.Student" />
+        <activity android:name=".Courses.Faculty" />
+        <activity android:name=".Cs.Ds.DsActivity" />
+        <activity android:name=".Sub.Cs" />
+        <activity android:name=".Sub.Mech" />
+        <activity android:name=".Sub.Elex" />
+        <activity android:name=".Sub.Civil" />
+        <activity android:name=".Sub.Electrical"></activity>
     </application>
 
 </manifest>

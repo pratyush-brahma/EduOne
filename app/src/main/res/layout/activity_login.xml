@@ -45,14 +45,16 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/etmail"
+                            android:id="@+id/etphoneno"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
+                            android:inputType="phone"
+
                             android:textAppearance="?android:attr/textAppearanceLarge"
 
 
-                            android:hint="E-mail" />
+                            android:hint="Phone" />
 
                     </android.support.design.widget.TextInputLayout>
 

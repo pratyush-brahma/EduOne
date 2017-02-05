@@ -43,7 +43,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="CSE"
+                        android:text="DS"
                         android:textStyle="bold"
                         android:id="@+id/btcs"
                         android:background="#ffffff" />
@@ -62,7 +62,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="MECH"
+                        android:text="Networking"
                         android:textStyle="bold"
 
                         android:id="@+id/btmech"
@@ -83,7 +83,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="CIVIL"
+                        android:text="ALGORITHMS"
                         android:textStyle="bold"
 
                         android:id="@+id/btcivil"
@@ -102,7 +102,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="ELEX"
+                        android:text="C++"
                         android:textStyle="bold"
 
                         android:id="@+id/btelex"
@@ -121,7 +121,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="ELECTRICAL"
+                        android:text="C"
                         android:textStyle="bold"
 
                         android:id="@+id/btelectrical"

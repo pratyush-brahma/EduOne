@@ -16,7 +16,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             return new Fragment1();
         } else if (position == 1) {
             return new Fragment2();
-        } else return new Fragment3();
+        } else
+            return new Fragment3();
     }
 
     @Override

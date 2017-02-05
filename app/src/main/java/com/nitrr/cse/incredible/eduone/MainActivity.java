@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
 
 
-            Intent ourintent=new Intent(MainActivity.this,CourseReg.class);
+            Intent ourintent=new Intent(MainActivity.this,MainActivity.class);
             startActivity(ourintent);
 
         }
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_developer) {
 
 
-            Intent ourintent=new Intent(MainActivity.this,CourseReg.class);
+            Intent ourintent=new Intent(MainActivity.this,Developer.class);
             startActivity(ourintent);
         }
 
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_doubts) {
 
 
-            Intent ourintent=new Intent(MainActivity.this,Mysubject.class);
+            Intent ourintent=new Intent(MainActivity.this,Doubt.class);
             startActivity(ourintent);
 
 

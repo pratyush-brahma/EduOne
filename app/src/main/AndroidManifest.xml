@@ -46,7 +46,9 @@
         <activity android:name=".Sub.Mech" />
         <activity android:name=".Sub.Elex" />
         <activity android:name=".Sub.Civil" />
-        <activity android:name=".Sub.Electrical"></activity>
+        <activity android:name=".Sub.Electrical" />
+        <activity android:name=".Doubt" />
+        <activity android:name=".Developer"></activity>
     </application>
 
 </manifest>

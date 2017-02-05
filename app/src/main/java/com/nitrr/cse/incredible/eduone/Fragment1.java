@@ -16,7 +16,10 @@ package com.nitrr.cse.incredible.eduone;
         import com.nitrr.cse.incredible.eduone.Cs.Ds.DsActivity;
         import com.nitrr.cse.incredible.eduone.Login_Register.Login;
         import com.nitrr.cse.incredible.eduone.Login_Register.Session;
+        import com.nitrr.cse.incredible.eduone.Sub.Civil;
         import com.nitrr.cse.incredible.eduone.Sub.Cs;
+        import com.nitrr.cse.incredible.eduone.Sub.Electrical;
+        import com.nitrr.cse.incredible.eduone.Sub.Elex;
         import com.nitrr.cse.incredible.eduone.Sub.Mech;
 
 
@@ -63,7 +66,7 @@ public class Fragment1 extends Fragment {
             public void onClick(View v) {
 
                 Intent ourintent=new Intent(getContext(),Cs.class);
-                ourintent.putExtra("key","value");
+             //   ourintent.putExtra("key","http://www.geeksforgeeks.org/");
                 startActivity(ourintent);
 
                 //getIntent().getExtras().get(key);
@@ -79,6 +82,8 @@ public class Fragment1 extends Fragment {
             public void onClick(View v) {
 
                 Intent ourintent=new Intent(getContext(),Mech.class);
+                //ourintent.putExtra("key","http://www.geeksforgeeks.org/");
+
                 startActivity(ourintent);
 
 
@@ -90,7 +95,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                Intent ourintent=new Intent(getContext(),Elex.class);
                 startActivity(ourintent);
 
 
@@ -102,7 +107,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                Intent ourintent=new Intent(getContext(),Civil.class);
                 startActivity(ourintent);
 
 
@@ -114,7 +119,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                Intent ourintent=new Intent(getContext(),Electrical.class);
                 startActivity(ourintent);
 
 

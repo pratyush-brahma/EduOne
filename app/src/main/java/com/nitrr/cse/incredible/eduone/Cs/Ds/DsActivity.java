@@ -80,6 +80,7 @@ public class DsActivity extends AppCompatActivity {
         webSettings.setLoadWithOverviewMode(true);
 
         webSettings.setSavePassword(true);
+        webSettings.setBuiltInZoomControls(true);
         webSettings.setSaveFormData(true);
         webSettings.setEnableSmoothTransition(true);
 

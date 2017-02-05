@@ -28,93 +28,12 @@ public class Fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
-        v = inflater.inflate(R.layout.fragment_fragment1, container, false);
+        v = inflater.inflate(R.layout.fragment_fragment3, container, false);
 
 
-        final Session session;
-
-        session = new Session(getActivity());
-
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                session.setLoggedin(false);
-
-                startActivity(new Intent(getContext(),Login.class));
-                getActivity().finish();
-            }
-        });
-
-
-
-
-        Button cs = (Button) v.findViewById(R.id.btcs);
-        Button mech = (Button) v.findViewById(R.id.btmech);
-        Button civil = (Button) v.findViewById(R.id.btcivil);
-
-        Button elex = (Button) v.findViewById(R.id.btelex);
-        Button electrical = (Button) v.findViewById(R.id.btelectrical);
-
-        cs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
-                startActivity(ourintent);
-
-
-            }
-        });
-
-
-
-        mech.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
-                startActivity(ourintent);
-
-
-            }
-        });
-
-
-        elex.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
-                startActivity(ourintent);
-
-
-            }
-        });
-
-
-        civil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
-                startActivity(ourintent);
-
-
-            }
-        });
-
-
-        electrical.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
-                startActivity(ourintent);
-
-
-            }
-        });
+        Intent ourintent=new Intent(getContext(),DsActivity.class);
+        ourintent.putExtra("key","http://www.geeksforgeeks.org/");
+        startActivity(ourintent);
 
 
 

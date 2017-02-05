@@ -29,7 +29,7 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v;
-        v = inflater.inflate(R.layout.fragment_fragment1, container, false);
+        v = inflater.inflate(R.layout.fragment_fragment2, container, false);
 
 
         final Session session;
@@ -57,18 +57,20 @@ public class Fragment2 extends Fragment {
         Button elex = (Button) v.findViewById(R.id.btelex);
         Button electrical = (Button) v.findViewById(R.id.btelectrical);
 
+
         cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent ourintent=new Intent(getContext(),DsActivity.class);
+                Intent ourintent = new Intent(getContext(), DsActivity.class);
+                ourintent.putExtra("key","https://www.youtube.com/geeksforgeeksvideos");
                 startActivity(ourintent);
+
+                //getIntent().getExtras().get(key);
 
 
             }
         });
-
-
 
         mech.setOnClickListener(new View.OnClickListener() {
             @Override

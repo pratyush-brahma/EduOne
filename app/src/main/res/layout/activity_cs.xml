@@ -62,7 +62,7 @@
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
-                        android:text="Networking"
+                        android:text="SQL"
                         android:textStyle="bold"
 
                         android:id="@+id/btSql"

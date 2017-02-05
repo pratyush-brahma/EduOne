@@ -31,9 +31,22 @@ public class Fragment3 extends Fragment {
         v = inflater.inflate(R.layout.fragment_fragment3, container, false);
 
 
-        Intent ourintent=new Intent(getContext(),DsActivity.class);
-        ourintent.putExtra("key","http://www.geeksforgeeks.org/");
-        startActivity(ourintent);
+        Button cs1 = (Button) v.findViewById(R.id.btcs1);
+
+
+        cs1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent ourintent = new Intent(getContext(), DsActivity.class);
+                ourintent.putExtra("key","http://ideone.com/");
+                startActivity(ourintent);
+
+                //getIntent().getExtras().get(key);
+
+
+            }
+        });
 
 
 
